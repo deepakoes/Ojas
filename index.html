@@ -92,7 +92,7 @@
 
 
         <a
-          href="https://wa.me/91725096234"
+          href="https://wa.me/91869920588"
           class="ojas-btn ojas-btn-secondary"
           target="_blank"
           rel="noopener"
@@ -3322,7 +3322,7 @@ body{
 
 <!-- STEP 02 -->
 
-<div class="oh-step oh-reveal">
+<!-- <div class="oh-step oh-reveal">
 
   <div class="oh-step-num">
     02
@@ -3330,7 +3330,6 @@ body{
 
   <div class="oh-img">
 
-    <!-- Replace with actual OJAS device image -->
 
     <img
       src="smart-device.jpg"
@@ -3347,15 +3346,17 @@ body{
     Reads voltage, current and power at the source.
   </p>
 
-</div>
+</div> 
+
+-->
 
 
 
 <!-- ARROW -->
-
+<!-- 
 <div class="oh-arrow oh-reveal">
   →
-</div>
+</div> -->
 
 
 
@@ -3364,7 +3365,7 @@ body{
 <div class="oh-step oh-reveal">
 
   <div class="oh-step-num">
-    03
+    02
   </div>
 
   <div class="oh-img">
@@ -3372,7 +3373,7 @@ body{
     <!-- Replace with actual gateway image -->
 
     <img
-      src="gateway.jpg"
+      src="public/images/gateway.png"
       alt="OJAS Plant Master Gateway"
     >
 
@@ -3403,7 +3404,7 @@ body{
 <div class="oh-step oh-reveal">
 
   <div class="oh-step-num">
-    04
+    03
   </div>
 
   <div class="oh-img">
@@ -3411,7 +3412,7 @@ body{
     <!-- Replace with dashboard + mobile image -->
 
     <img
-      src="dashboard.jpg"
+      src="public/images/dashboard.png"
       alt="OJAS live dashboard and mobile app"
     >
 
@@ -9550,7 +9551,135 @@ body{
 }
 
 </style>
+<script>
+(function () {
+  var form = document.getElementById('ojasWalkthroughForm');
+  var success = document.getElementById('ojasSuccessMessage');
 
+  if (!form || !success) return;
+
+  // Honeypot field for bots
+  var hp = document.createElement('input');
+  hp.type = 'text';
+  hp.name = 'website';
+  hp.tabIndex = -1;
+  hp.autocomplete = 'off';
+  hp.setAttribute('aria-hidden', 'true');
+
+  hp.style.cssText =
+    'position:absolute;' +
+    'left:-9999px;' +
+    'width:1px;' +
+    'height:1px;' +
+    'opacity:0';
+
+  form.appendChild(hp);
+
+  // Error message
+  var msg = document.createElement('p');
+  msg.setAttribute('role', 'alert');
+
+  msg.style.cssText =
+    'display:none;' +
+    'margin:12px 0 0;' +
+    'text-align:center;' +
+    'font-size:12px;' +
+    'color:#D44C4C';
+
+  form.appendChild(msg);
+
+  var btn = form.querySelector('.ojas-submit-btn');
+
+  function show(message) {
+    msg.textContent = message;
+    msg.style.display = message ? 'block' : 'none';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    show('');
+
+    // Collect form data
+    var data = {};
+
+    new FormData(form).forEach(function (value, key) {
+      data[key] = String(value).trim();
+    });
+
+    // Clean mobile number
+    data.mobile = (data.mobile || '').replace(/\D/g, '');
+
+    // Validate mobile
+    if (!/^[6-9]\d{9}$/.test(data.mobile)) {
+      show('Enter a valid 10-digit mobile number.');
+      return;
+    }
+
+    // Additional information
+    data.source = window.location.href;
+    data.referrer = document.referrer;
+
+    // Save original button HTML
+    var originalButton = btn.innerHTML;
+
+    // Disable button
+    btn.disabled = true;
+    btn.innerHTML = '<span>SUBMITTING...</span><b>...</b>';
+
+    // Send data to backend
+    fetch('/api/lead', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(function (response) {
+
+        if (!response.ok) {
+          throw new Error('HTTP ' + response.status);
+        }
+
+        return response.json();
+      })
+
+      .then(function () {
+
+        // Hide form
+        form.style.display = 'none';
+
+        // Show success message
+        success.style.display = 'block';
+
+        // Google Analytics
+        if (window.gtag) {
+          window.gtag('event', 'generate_lead');
+        }
+
+        // Facebook Pixel
+        if (window.fbq) {
+          window.fbq('track', 'Lead');
+        }
+      })
+
+      .catch(function () {
+
+        show(
+          'Could not send your request. Try again, or message us on WhatsApp.'
+        );
+      })
+
+      .then(function () {
+
+        // Re-enable button
+        btn.disabled = false;
+        btn.innerHTML = originalButton;
+      });
+  });
+
+})();
+</script>
 
 <script>
 
@@ -10027,7 +10156,7 @@ body{
 
 
   <!-- VIDEO CTA -->
-  <div class="ojas-video-strip">
+  <!-- <div class="ojas-video-strip">
 
     <div class="ojas-video-left">
 
@@ -10053,7 +10182,7 @@ body{
       <span>↗</span>
     </a>
 
-  </div>
+  </div> -->
 
 </section>
 
