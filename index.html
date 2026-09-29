@@ -67,10 +67,8 @@
       <!-- CTA Area -->
       <div class="ojas-hero-actions">
 
-        <a
-          href="#contact"
-          class="ojas-btn ojas-btn-primary"
-        >
+        <a href="#ojas-final-cta" class="ojas-btn ojas-btn-primary">
+
           <span>BOOK A FREE BILL WALKTHROUGH</span>
 
           <svg
@@ -128,7 +126,7 @@
 
 
       <!-- Video Link -->
-      <a
+      <!-- <a
         href="#ojas-video"
         class="ojas-video-link"
       >
@@ -145,16 +143,16 @@
             />
           </svg>
 
-        </span>
+        </span> -->
 
-        <span>
+        <!-- <span>
           Watch OJAS in action
           <small>(60 seconds)</small>
         </span>
 
-        <span class="ojas-video-arrow">↗</span>
+        <span class="ojas-video-arrow">↗</span> -->
 
-      </a>
+      <!-- </a> -->
 
     </div>
 
@@ -369,9 +367,7 @@
 }
 
 
-/* =========================================================
-   EYEBROW
-   ========================================================= */
+
 
 .ojas-eyebrow {
   display: inline-flex;
@@ -477,6 +473,8 @@
   position: relative;
 }
 
+html { scroll-behavior: smooth; }
+#ojas-final-cta { scroll-margin-top: 0; } 
 
 /* Accent underline */
 
@@ -2585,7 +2583,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   <!-- Closing -->
   <div class="ob-closing">
-    <p>Most owners find out a month later, on the bill.
+    <p>Most owners don’t see their energy problems until the bill arrives.
       <strong>OJAS shows it while the plant is running.</strong>
     </p>
   </div>
@@ -3363,11 +3361,10 @@ body{
 
 
 
-<!-- ARROW -->
-<!-- 
+<!-- ARROW --> 
 <div class="oh-arrow oh-reveal">
   →
-</div> -->
+</div> 
 
 
 
@@ -6022,7 +6019,7 @@ body{
 
     position:absolute;
 
-    top:30px;
+    bottom:30px;
     right:30px;
 
     width:125px;
@@ -6087,6 +6084,7 @@ body{
     line-height:1;
 
     color:var(--oes-blue);
+
 }
 
 
@@ -6646,7 +6644,7 @@ body{
 
     <img
         class="oes-trust-image"
-        src="YOUR-REAL-OES-IMAGE-URL-HERE.jpg"
+        src="public/images/team.png"
         alt="OES team, laboratory and production environment"
         loading="lazy"
     >
@@ -9562,7 +9560,7 @@ body{
 }
 
 </style>
-<script>
+<!-- <script>
 (function () {
   var form = document.getElementById('ojasWalkthroughForm');
   var success = document.getElementById('ojasSuccessMessage');
@@ -9690,7 +9688,7 @@ body{
   });
 
 })();
-</script>
+</script> -->
 
 <script>
 
@@ -11482,8 +11480,76 @@ body{
 
 </style>
 
-
 <script>
+(function () {
+  var form = document.getElementById('ojasWalkthroughForm');
+  var success = document.getElementById('ojasSuccessMessage');
+  if (!form || !success) return;
+
+  // Honeypot for bots
+  var hp = document.createElement('input');
+  hp.type = 'text';
+  hp.name = 'website';
+  hp.tabIndex = -1;
+  hp.autocomplete = 'off';
+  hp.setAttribute('aria-hidden', 'true');
+  hp.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0';
+  form.appendChild(hp);
+
+  // Error message
+  var msg = document.createElement('p');
+  msg.setAttribute('role', 'alert');
+  msg.style.cssText = 'display:none;margin:12px 0 0;text-align:center;font-size:12px;color:#D44C4C';
+  form.appendChild(msg);
+
+  var btn = form.querySelector('.ojas-submit-btn');
+
+  function show(text) {
+    msg.textContent = text;
+    msg.style.display = text ? 'block' : 'none';
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    show('');
+
+    var mobile = form.querySelector('[name="mobile"]').value.replace(/\D/g, '');
+    if (!/^[6-9]\d{9}$/.test(mobile)) {
+      show('Enter a valid 10-digit mobile number.');
+      return;
+    }
+
+    var data = new FormData(form);
+    data.set('mobile', mobile);
+    data.append('action', 'ojas_lead');
+    data.append('source', window.location.href);
+    data.append('referrer', document.referrer);
+
+    var original = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span>SUBMITTING...</span><b>...</b>';
+
+    fetch('/wp-admin/admin-ajax.php', { method: 'POST', body: data })
+      .then(function (r) { return r.json(); })
+      .then(function (res) {
+        if (!res.success) throw new Error('failed');
+        form.style.display = 'none';
+        success.style.display = 'block';
+        if (window.gtag) window.gtag('event', 'generate_lead');
+        if (window.fbq) window.fbq('track', 'Lead');
+      })
+      .catch(function () {
+        show('Could not send your request. Try again, or message us on WhatsApp.');
+      })
+      .then(function () {
+        btn.disabled = false;
+        btn.innerHTML = original;
+      });
+  });
+})();
+</script>
+
+<!-- <script>
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -11551,6 +11617,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-</script>
+</script> -->
 
 
