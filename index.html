@@ -218,7 +218,12 @@
           alt="OJAS Edge Gateway"
           loading="eager"
         />
-
+        <img
+          class="ojas-hardware-image"
+          src="public/images/transparentnode.png"
+          alt="OJAS Edge NODE"
+          loading="eager" 
+/>
       </div>
 
 
@@ -295,6 +300,27 @@
 /* =========================================================
    OJAS HERO
    ========================================================= */
+.ojas-hardware-wrapper {
+  position: absolute;
+  top: 300px;
+  right: 280px;
+
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+}
+
+.ojas-hardware-image {
+  width: 180px;
+}
+
+.ojas-hardware-image:first-child {
+  transform: translateY(-25px);
+}
+
+.ojas-hardware-image:nth-child(2) {
+  transform: translateY(20px);
+}
 
 .ojas-hero {
   --ojas-primary: #48749F;
@@ -2450,6 +2476,22 @@ document.addEventListener("DOMContentLoaded", function () {
     font-weight:700;
     color:var(--white);
   }
+  .ob-disclaimer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  font-size: 15px;
+  color: #050505;
+  margin-top: 16px;
+}
+
+.ob-warning-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
 
   /* ---------- Responsive ---------- */
   @media (max-width:820px){
@@ -2557,6 +2599,10 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       </div>
     </div>
+    <div class="ob-disclaimer">
+  <img src="public/images/warning.svg" alt="Warning" class="ob-warning-icon">
+  <span>Disclaimer: Bills shown are for illustration purposes only and do not represent actual customer data.</span>
+</div>
   </div>
 
   <!-- Four questions -->
@@ -3342,7 +3388,7 @@ body{
 
 
     <img
-      src="image.png"
+      src="public/images/image.png"
       alt="OJAS smart device fitted on machine"
     >
 
