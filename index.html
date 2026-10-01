@@ -9955,6 +9955,13 @@ body{
      FULL WIDTH + MOBILE FRIENDLY
 ========================= -->
 
+<!-- =========================================================
+     OJAS FINAL CTA SECTION  (MERGED)
+     Replace your whole existing "OJAS FINAL CTA SECTION"
+     block (HTML + <style> + <script>) with this file.
+     Includes: plan selector, poster popup, FormSubmit email.
+========================================================= -->
+
 <section class="ojas-final-cta" id="ojas-final-cta">
 
   <!-- Animated Background -->
@@ -9992,7 +9999,7 @@ body{
       </h2>
 
       <p class="ojas-cta-subtitle">
-        Start with a free bill walkthrough.
+        Start with a bill walkthrough.
         <strong>No cost, no commitment.</strong>
       </p>
 
@@ -10031,64 +10038,45 @@ body{
     <!-- FORM CARD -->
     <div class="ojas-form-wrapper">
 
-      <div class="ojas-form-top">
+      <div class="ojas-form-top" id="ojasFormTop">
         <div>
           <span class="ojas-form-label">GET STARTED</span>
-          <h3>Request Your Free Walkthrough</h3>
-        </div>
-
-        <div class="ojas-form-status">
-          <span></span> FREE
+          <h3>Request Your Walkthrough</h3>
         </div>
       </div>
 
-      <form id="ojasWalkthroughForm">
+      <form id="ojasWalkthroughForm" novalidate>
+
+        <!-- FormSubmit settings -->
+        <input type="hidden" name="_subject" value="New OJAS Bill Walkthrough Request">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
 
         <!-- NAME -->
         <div class="ojas-field">
-          <label>
-            Name <span>*</span>
-          </label>
-
+          <label for="ojasName">Name <span>*</span></label>
           <div class="ojas-input-wrap">
             <span class="ojas-input-icon">◯</span>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your name"
-              required
-            >
+            <input id="ojasName" type="text" name="name" placeholder="Your name" required>
           </div>
         </div>
-
 
         <!-- COMPANY -->
         <div class="ojas-field">
-          <label>
-            Company <span>*</span>
-          </label>
-
+          <label for="ojasCompany">Company <span>*</span></label>
           <div class="ojas-input-wrap">
             <span class="ojas-input-icon">▣</span>
-            <input
-              type="text"
-              name="company"
-              placeholder="Company name"
-              required
-            >
+            <input id="ojasCompany" type="text" name="company" placeholder="Company name" required>
           </div>
         </div>
 
-
         <!-- MOBILE -->
         <div class="ojas-field">
-          <label>
-            Mobile / WhatsApp <span>*</span>
-          </label>
-
+          <label for="ojasMobile">Mobile / WhatsApp <span>*</span></label>
           <div class="ojas-input-wrap">
             <span class="ojas-input-icon">☎</span>
             <input
+              id="ojasMobile"
               type="tel"
               name="mobile"
               placeholder="10-digit mobile number"
@@ -10099,52 +10087,33 @@ body{
           </div>
         </div>
 
-
-        <!-- OPTIONAL ROW -->
+        <!-- CITY + MANUFACTURING -->
         <div class="ojas-form-row">
 
-          <!-- CITY -->
           <div class="ojas-field">
-            <label>City</label>
-
+            <label for="ojasCity">City</label>
             <div class="ojas-input-wrap">
               <span class="ojas-input-icon">⌖</span>
-              <input
-                type="text"
-                name="city"
-                placeholder="City"
-              >
+              <input id="ojasCity" type="text" name="city" placeholder="City">
             </div>
           </div>
 
-
-          <!-- MANUFACTURING -->
           <div class="ojas-field">
-            <label>What do you manufacture?</label>
-
+            <label for="ojasMfg">What do you manufacture?</label>
             <div class="ojas-input-wrap">
               <span class="ojas-input-icon">⚙</span>
-              <input
-                type="text"
-                name="manufacturing"
-                placeholder="Your industry"
-              >
+              <input id="ojasMfg" type="text" name="manufacturing" placeholder="Your industry">
             </div>
           </div>
 
         </div>
 
-
         <!-- ELECTRICITY BILL -->
         <div class="ojas-field">
-          <label>
-            Roughly, your monthly electricity bill
-          </label>
-
+          <label for="ojasBill">Roughly, your monthly electricity bill</label>
           <div class="ojas-select-wrap">
             <span class="ojas-input-icon">₹</span>
-
-            <select name="bill">
+            <select id="ojasBill" name="bill">
               <option value="">Select a range</option>
               <option>Under ₹1 lakh</option>
               <option>₹1–5 lakh</option>
@@ -10152,21 +10121,48 @@ body{
               <option>Above ₹10 lakh</option>
               <option>Not sure</option>
             </select>
-
             <span class="ojas-select-arrow">⌄</span>
           </div>
         </div>
 
+        <!-- PLAN SELECTOR (NEW) -->
+        <div class="ojas-field">
+          <span class="ojas-plan-heading">Which plan are you interested in? <span class="ojas-req">*</span></span>
+
+          <div class="ojas-plan-grid">
+
+            <label class="ojas-plan-card">
+              <input type="radio" name="plan" value="OJAS Bill X-Ray (₹99)">
+              <span class="ojas-plan-body">
+                <span class="ojas-plan-tick">✓</span>
+                <span class="ojas-plan-name">OJAS Bill X-Ray</span>
+                <span class="ojas-plan-desc">Decode your electricity bill. Clear report in 72 hours.</span>
+                <span class="ojas-plan-price">₹99</span>
+                
+              </span>
+            </label>
+
+            <label class="ojas-plan-card">
+              <input type="radio" name="plan" value="OJAS Plant Energy Scan (₹2,499)">
+              <span class="ojas-plan-body">
+                <span class="ojas-plan-tick">✓</span>
+                <span class="ojas-plan-name">OJAS Plant Energy Scan</span>
+                <span class="ojas-plan-desc">10 days of real plant data with a ranked action plan.</span>
+                <span class="ojas-plan-price">₹2,499</span>
+                
+              </span>
+            </label>
+
+          </div>
+
+          <p class="ojas-plan-error" id="ojasPlanError">Please choose a plan to continue.</p>
+        </div>
 
         <!-- SUBMIT -->
-        <button
-          type="submit"
-          class="ojas-submit-btn"
-        >
-          <span>REQUEST MY FREE BILL WALKTHROUGH</span>
+        <button type="submit" class="ojas-submit-btn">
+          <span>REQUEST MY BILL WALKTHROUGH</span>
           <b>→</b>
         </button>
-
 
         <!-- WHATSAPP -->
         <a
@@ -10180,7 +10176,6 @@ body{
           <span class="whatsapp-arrow">↗</span>
         </a>
 
-
         <!-- NOTE -->
         <p class="ojas-form-note">
           By submitting, you agree that OES may contact you
@@ -10191,10 +10186,7 @@ body{
 
 
       <!-- SUCCESS MESSAGE -->
-      <div
-        class="ojas-success-message"
-        id="ojasSuccessMessage"
-      >
+      <div class="ojas-success-message" id="ojasSuccessMessage">
         <div class="ojas-success-icon">✓</div>
 
         <h3>Thank You.</h3>
@@ -10209,37 +10201,18 @@ body{
 
   </div>
 
-
-  <!-- VIDEO CTA -->
-  <!-- <div class="ojas-video-strip">
-
-    <div class="ojas-video-left">
-
-      <span class="ojas-video-mini">NOT READY TO TALK?</span>
-
-      <h3>
-        See how OJAS works.
-      </h3>
-
-      <p>
-        Watch the 60-second video and see energy
-        intelligence in action.
-      </p>
-
-    </div>
-
-    <a
-      href="#ojas-video"
-      class="ojas-video-btn"
-    >
-      <span class="ojas-play">▶</span>
-      WATCH THE 60-SECOND VIDEO
-      <span>↗</span>
-    </a>
-
-  </div> -->
-
 </section>
+
+
+<!-- POSTER POPUP (NEW) -->
+<div class="ojas-modal" id="ojasPlanModal" aria-hidden="true">
+  <div class="ojas-modal-box" role="dialog" aria-modal="true" aria-labelledby="ojasModalTitle">
+    <button type="button" class="ojas-modal-close" id="ojasModalClose" aria-label="Close">×</button>
+    <h4 id="ojasModalTitle"></h4>
+    <img id="ojasModalImg" src="" alt="">
+    <button type="button" class="ojas-modal-select" id="ojasModalSelect">SELECT THIS PLAN</button>
+  </div>
+</div>
 
 
 <style>
@@ -10249,11 +10222,13 @@ body{
 ===================================== */
 
 #ojas-final-cta {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   --ojas-blue: #48749F;
   --ojas-dark: #2C4A66;
   --ojas-light: #D6E4EE;
   --ojas-gold: #F2A93B;
   --ojas-white: #ffffff;
+  --ojas-red: #D44C4C;
 
   width: 100vw;
   max-width: 100vw;
@@ -10279,7 +10254,15 @@ body{
 
   color: #fff;
 
-  padding: 110px 6vw 0;
+  padding: 110px 6vw 90px;
+}
+
+#ojas-final-cta *,
+#ojas-final-cta *::before,
+#ojas-final-cta *::after,
+.ojas-modal,
+.ojas-modal * {
+  box-sizing: border-box;
 }
 
 
@@ -10655,41 +10638,8 @@ body{
 }
 
 
-.ojas-form-status {
-
-  font-size: 10px;
-
-  font-weight: 800;
-
-  letter-spacing: 1px;
-
-  color: #48749F;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 6px;
-}
-
-
-.ojas-form-status span {
-
-  width: 7px;
-  height: 7px;
-
-  border-radius: 50%;
-
-  background: #3BA76A;
-
-  box-shadow: 0 0 0 5px rgba(59,167,106,.12);
-
-  animation: ojasPulse 1.8s infinite;
-}
-
-
 /* =====================================
-   FORM
+   FORM FIELDS
 ===================================== */
 
 .ojas-field {
@@ -10698,7 +10648,9 @@ body{
 }
 
 
-.ojas-field label {
+/* only the field's own label (not the plan cards) */
+.ojas-field > label,
+.ojas-plan-heading {
 
   display: block;
 
@@ -10712,8 +10664,9 @@ body{
 }
 
 
-.ojas-field label span {
-  color: #D44C4C;
+.ojas-field > label span,
+.ojas-plan-heading .ojas-req {
+  color: var(--ojas-red);
 }
 
 
@@ -10738,6 +10691,8 @@ body{
   color: #7890A3;
 
   z-index: 2;
+
+  pointer-events: none;
 }
 
 
@@ -10791,6 +10746,14 @@ body{
 }
 
 
+.ojas-input-wrap input.ojas-invalid {
+
+  border-color: var(--ojas-red);
+
+  animation: ojasShake .35s ease;
+}
+
+
 .ojas-form-row {
 
   display: grid;
@@ -10804,6 +10767,7 @@ body{
 .ojas-select-wrap select {
 
   appearance: none;
+  -webkit-appearance: none;
 
   cursor: pointer;
 }
@@ -10822,6 +10786,199 @@ body{
   color: #7890A3;
 
   pointer-events: none;
+}
+
+
+/* =====================================
+   PLAN CARDS
+===================================== */
+
+.ojas-plan-grid {
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+}
+
+
+.ojas-plan-card {
+
+  position: relative;
+
+  display: block;
+
+  cursor: pointer;
+}
+
+
+.ojas-plan-card input {
+
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+.ojas-plan-body {
+
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  height: 100%;
+
+  padding: 15px;
+
+  background: #F8FAFC;
+
+  border: 1.5px solid #D9E2E8;
+
+  border-radius: 14px;
+
+  transition:
+    border-color .2s ease,
+    background .2s ease,
+    box-shadow .2s ease,
+    transform .2s ease;
+}
+
+
+.ojas-plan-card:hover .ojas-plan-body {
+
+  border-color: #7F9BBD;
+
+  transform: translateY(-3px);
+}
+
+
+.ojas-plan-card input:checked + .ojas-plan-body {
+
+  border-color: var(--ojas-dark);
+
+  background: #EAF1F9;
+
+  box-shadow: 0 10px 24px rgba(44,74,102,.18);
+}
+
+
+.ojas-plan-card input:focus-visible + .ojas-plan-body {
+
+  outline: 2px solid var(--ojas-blue);
+
+  outline-offset: 2px;
+}
+
+
+.ojas-plan-tick {
+
+  position: absolute;
+
+  top: 10px;
+  right: 10px;
+
+  width: 22px;
+  height: 22px;
+
+  display: grid;
+  place-items: center;
+
+  font-size: 12px;
+
+  color: #fff;
+
+  background: var(--ojas-dark);
+
+  border-radius: 50%;
+
+  transform: scale(0);
+
+  transition: transform .25s cubic-bezier(.3,1.6,.5,1);
+}
+
+
+.ojas-plan-card input:checked + .ojas-plan-body .ojas-plan-tick {
+
+  transform: scale(1);
+}
+
+
+.ojas-plan-name {
+
+  padding-right: 26px;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  line-height: 1.25;
+
+  color: var(--ojas-dark);
+}
+
+
+.ojas-plan-desc {
+
+  font-size: 12px;
+
+  line-height: 1.45;
+
+  color: #6B7B90;
+}
+
+
+.ojas-plan-price {
+
+  margin-top: 2px;
+
+  font-size: 24px;
+
+  font-weight: 800;
+
+  letter-spacing: -.5px;
+
+  color: var(--ojas-dark);
+}
+
+
+.ojas-plan-view {
+
+  width: fit-content;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  color: var(--ojas-blue);
+
+  text-decoration: underline;
+
+  cursor: pointer;
+}
+
+
+.ojas-plan-error {
+
+  display: none;
+
+  margin: 8px 0 0;
+
+  font-size: 12px;
+
+  color: var(--ojas-red);
+}
+
+
+.ojas-plan-error.show {
+
+  display: block;
 }
 
 
@@ -10875,7 +11032,8 @@ body{
 
   transition:
     transform .25s ease,
-    box-shadow .25s ease;
+    box-shadow .25s ease,
+    opacity .25s ease;
 }
 
 
@@ -10901,6 +11059,16 @@ body{
 
   box-shadow:
     0 18px 35px rgba(44,74,102,.28);
+}
+
+
+.ojas-submit-btn:disabled {
+
+  opacity: .7;
+
+  cursor: not-allowed;
+
+  transform: none;
 }
 
 
@@ -11038,129 +11206,167 @@ body{
 
 
 /* =====================================
-   VIDEO STRIP
+   POSTER POPUP
 ===================================== */
 
-.ojas-video-strip {
+.ojas-modal {
 
-  max-width: 1450px;
+  position: fixed;
 
-  margin: 90px auto 0;
+  inset: 0;
 
-  padding: 25px 0 35px;
+  z-index: 99999;
 
-  border-top:
-    1px solid rgba(255,255,255,.16);
-
-  display: flex;
+  display: none;
 
   align-items: center;
 
-  justify-content: space-between;
+  justify-content: center;
 
-  gap: 30px;
+  padding: 16px;
+
+  background: rgba(20,38,60,.8);
+
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+}
+
+
+.ojas-modal.open {
+
+  display: flex;
+
+  animation: ojasFade .25s ease;
+}
+
+
+.ojas-modal-box {
 
   position: relative;
 
-  z-index: 2;
+  width: 100%;
+
+  max-width: 460px;
+
+  max-height: 92vh;
+
+  overflow: auto;
+
+  padding: 22px;
+
+  background: #FBFCFD;
+
+  border-top: 5px solid #F2A93B;
+
+  border-radius: 24px;
+
+  box-shadow: 0 30px 80px rgba(0,0,0,.4);
+
+  animation: ojasModalIn .4s cubic-bezier(.2,.9,.3,1.2);
 }
 
 
-.ojas-video-mini {
+.ojas-modal-box h4 {
+
+  margin: 0 44px 14px 0;
+
+  font-size: 18px;
+
+  line-height: 1.3;
+
+  color: #2C4A66;
+}
+
+
+.ojas-modal-box img {
 
   display: block;
 
-  font-size: 10px;
+  width: 100%;
 
-  font-weight: 800;
+  height: auto;
 
-  letter-spacing: 2px;
+  border: 1px solid #D9E1EC;
 
-  color: rgba(255,255,255,.55);
-
-  margin-bottom: 6px;
+  border-radius: 14px;
 }
 
 
-.ojas-video-left h3 {
+.ojas-modal-close {
 
-  margin: 0;
+  position: absolute;
 
-  font-size: 25px;
+  top: 14px;
+  right: 14px;
 
-  letter-spacing: -.5px;
-}
+  width: 34px;
+  height: 34px;
 
-
-.ojas-video-left p {
-
-  margin: 5px 0 0;
-
-  color: rgba(255,255,255,.65);
-
-  font-size: 13px;
-}
-
-
-.ojas-video-btn {
-
-  min-height: 52px;
-
-  padding: 0 20px;
-
-  border-radius: 11px;
-
-  border: 1px solid rgba(255,255,255,.25);
-
-  color: #fff;
-
-  text-decoration: none;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-
-  font-size: 11px;
-
-  font-weight: 800;
-
-  letter-spacing: .7px;
-
-  background: rgba(255,255,255,.08);
-
-  backdrop-filter: blur(10px);
-
-  transition:
-    background .25s ease,
-    transform .25s ease;
-}
-
-
-.ojas-video-btn:hover {
-
-  background: rgba(255,255,255,.16);
-
-  transform: translateY(-3px);
-}
-
-
-.ojas-play {
-
-  width: 30px;
-  height: 30px;
-
-  display: grid;
-  place-items: center;
+  border: 0;
 
   border-radius: 50%;
 
-  background: #F2A93B;
+  font-size: 22px;
+
+  line-height: 1;
+
+  color: #2C4A66;
+
+  background: #EAF1F9;
+
+  cursor: pointer;
+
+  transition:
+    transform .2s ease,
+    background .2s ease;
+}
+
+
+.ojas-modal-close:hover {
+
+  transform: rotate(90deg);
+
+  background: #D9E6F4;
+}
+
+
+.ojas-modal-select {
+
+  width: 100%;
+
+  margin-top: 16px;
+
+  padding: 15px;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: .8px;
 
   color: #fff;
 
-  font-size: 10px;
+  background: linear-gradient(135deg, #2C4A66, #48749F);
+
+  border: 0;
+
+  border-radius: 12px;
+
+  box-shadow: 0 12px 26px rgba(44,74,102,.3);
+
+  cursor: pointer;
+
+  transition: transform .2s ease;
+}
+
+
+.ojas-modal-select:hover {
+
+  transform: translateY(-2px);
 }
 
 
@@ -11333,6 +11539,38 @@ body{
 }
 
 
+@keyframes ojasShake {
+
+  0%,100% { transform: translateX(0); }
+  25%     { transform: translateX(-5px); }
+  75%     { transform: translateX(5px); }
+
+}
+
+
+@keyframes ojasFade {
+
+  from { opacity: 0; }
+  to   { opacity: 1; }
+
+}
+
+
+@keyframes ojasModalIn {
+
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+
+}
+
+
 /* =====================================
    MOBILE
 ===================================== */
@@ -11343,7 +11581,7 @@ body{
 
     padding:
       75px 20px
-      0;
+      60px;
   }
 
 
@@ -11395,28 +11633,6 @@ body{
     gap: 0;
   }
 
-
-  .ojas-video-strip {
-
-    margin-top: 60px;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    padding-bottom: 30px;
-  }
-
-
-  .ojas-video-btn {
-
-    width: 100%;
-
-    justify-content: center;
-
-    box-sizing: border-box;
-  }
-
 }
 
 
@@ -11424,13 +11640,23 @@ body{
    SMALL MOBILE
 ===================================== */
 
+@media (max-width: 560px) {
+
+  .ojas-plan-grid {
+
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
 @media (max-width: 480px) {
 
   #ojas-final-cta {
 
     padding:
       60px 15px
-      0;
+      50px;
   }
 
 
@@ -11495,14 +11721,6 @@ body{
   }
 
 
-  .ojas-form-top {
-
-    flex-direction: column;
-
-    gap: 8px;
-  }
-
-
   .ojas-form-top h3 {
 
     font-size: 21px;
@@ -11516,33 +11734,81 @@ body{
     letter-spacing: .5px;
   }
 
+}
 
-  .ojas-video-left h3 {
 
-    font-size: 22px;
+/* =====================================
+   REDUCED MOTION
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  #ojas-final-cta *,
+  .ojas-modal,
+  .ojas-modal * {
+
+    animation: none !important;
+
+    transition: none !important;
   }
 
 }
 
 </style>
 
-<script>
-(function () {
-  var form = document.getElementById('ojasWalkthroughForm');
-  var success = document.getElementById('ojasSuccessMessage');
-  if (!form || !success) return;
 
-  // Honeypot for bots
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  var form      = document.getElementById('ojasWalkthroughForm');
+  var success   = document.getElementById('ojasSuccessMessage');
+  var formTop   = document.getElementById('ojasFormTop');
+
+  if (!form || !success) {
+    console.error('Form or success element not found');
+    return;
+  }
+
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/deepakoes5@gmail.com';
+
+  /* =====================================================
+     EDIT THESE: poster image URLs
+     Upload both posters to the WordPress Media Library
+     and paste the links below.
+  ===================================================== */
+  var PLANS = {
+    xray: {
+      value: 'OJAS Bill X-Ray (₹99)',
+      title: 'OJAS Bill X-Ray – ₹99',
+      img:   'https://omkaarenergy.com/wp-content/uploads/2026/09/ojas-bill-xray-poster.jpg'
+    },
+    scan: {
+      value: 'OJAS Plant Energy Scan (₹2,499)',
+      title: 'OJAS Plant Energy Scan – ₹2,499',
+      img:   'https://omkaarenergy.com/wp-content/uploads/2026/09/ojas-plant-energy-scan-poster.jpg'
+    }
+  };
+
+  var modal     = document.getElementById('ojasPlanModal');
+  var mTitle    = document.getElementById('ojasModalTitle');
+  var mImg      = document.getElementById('ojasModalImg');
+  var mClose    = document.getElementById('ojasModalClose');
+  var mSelect   = document.getElementById('ojasModalSelect');
+  var planError = document.getElementById('ojasPlanError');
+  var mobile    = form.elements['mobile'];
+  var current   = null;
+
+  /* ---------- Honeypot (spam protection) ---------- */
   var hp = document.createElement('input');
   hp.type = 'text';
-  hp.name = 'website';
+  hp.name = '_honey';
   hp.tabIndex = -1;
   hp.autocomplete = 'off';
   hp.setAttribute('aria-hidden', 'true');
   hp.style.cssText = 'position:absolute;left:-9999px;width:1px;height:1px;opacity:0';
   form.appendChild(hp);
 
-  // Error message
+  /* ---------- Error message ---------- */
   var msg = document.createElement('p');
   msg.setAttribute('role', 'alert');
   msg.style.cssText = 'display:none;margin:12px 0 0;text-align:center;font-size:12px;color:#D44C4C';
@@ -11555,19 +11821,110 @@ body{
     msg.style.display = text ? 'block' : 'none';
   }
 
+  /* ---------- Mobile: digits only ---------- */
+  mobile.addEventListener('input', function () {
+    mobile.value = mobile.value.replace(/\D/g, '').slice(0, 10);
+  });
+
+  /* ---------- Poster popup ---------- */
+  function openModal(key) {
+    current = key;
+    mTitle.textContent = PLANS[key].title;
+    mImg.src = PLANS[key].img;
+    mImg.alt = PLANS[key].title;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function selectPlan(key) {
+    form.querySelectorAll('input[name="plan"]').forEach(function (r) {
+      r.checked = (r.value === PLANS[key].value);
+    });
+    planError.classList.remove('show');
+  }
+
+  // Choosing a plan opens its poster
+  form.querySelectorAll('input[name="plan"]').forEach(function (r) {
+    r.addEventListener('change', function () {
+      planError.classList.remove('show');
+    });
+  });
+
+  // "View poster" link: open without changing the selection
+  form.querySelectorAll('.ojas-plan-view').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      openModal(el.getAttribute('data-plan'));
+    });
+  });
+
+  mClose.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  mSelect.addEventListener('click', function () {
+    if (current) selectPlan(current);
+    closeModal();
+  });
+
+  /* ---------- Validation helper ---------- */
+  function markInvalid(el) {
+    el.classList.add('ojas-invalid');
+    setTimeout(function () { el.classList.remove('ojas-invalid'); }, 1200);
+  }
+
+  /* ---------- Submit ---------- */
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     show('');
 
-    var mobile = form.querySelector('[name="mobile"]').value.replace(/\D/g, '');
-    if (!/^[6-9]\d{9}$/.test(mobile)) {
+    var ok = true;
+    var firstBad = null;
+
+    ['name', 'company'].forEach(function (n) {
+      var el = form.elements[n];
+      if (!el.value.trim()) {
+        markInvalid(el);
+        ok = false;
+        firstBad = firstBad || el;
+      }
+    });
+
+    var mobileValue = mobile.value.replace(/\D/g, '');
+    if (!/^[6-9]\d{9}$/.test(mobileValue)) {
+      markInvalid(mobile);
       show('Enter a valid 10-digit mobile number.');
+      ok = false;
+      firstBad = firstBad || mobile;
+    }
+
+    var chosen = form.querySelector('input[name="plan"]:checked');
+    if (!chosen) {
+      planError.classList.add('show');
+      ok = false;
+    }
+
+    if (!ok) {
+      if (firstBad) firstBad.focus();
       return;
     }
 
-    var data = new FormData(form);
-    data.set('mobile', mobile);
-    data.append('action', 'ojas_lead');
+    var data = new FormData(form);          // includes the selected "plan"
+    data.set('mobile', mobileValue);
     data.append('source', window.location.href);
     data.append('referrer', document.referrer);
 
@@ -11575,16 +11932,28 @@ body{
     btn.disabled = true;
     btn.innerHTML = '<span>SUBMITTING...</span><b>...</b>';
 
-    fetch('/wp-admin/admin-ajax.php', { method: 'POST', body: data })
-      .then(function (r) { return r.json(); })
+    fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: data
+    })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
       .then(function (res) {
-        if (!res.success) throw new Error('failed');
+        console.log('FormSubmit response:', res);
+        if (res.success !== 'true' && res.success !== true) {
+          throw new Error(res.message || 'FormSubmit failed');
+        }
         form.style.display = 'none';
+        if (formTop) formTop.style.display = 'none';
         success.style.display = 'block';
         if (window.gtag) window.gtag('event', 'generate_lead');
         if (window.fbq) window.fbq('track', 'Lead');
       })
-      .catch(function () {
+      .catch(function (err) {
+        console.error(err);
         show('Could not send your request. Try again, or message us on WhatsApp.');
       })
       .then(function () {
@@ -11592,9 +11961,9 @@ body{
         btn.innerHTML = original;
       });
   });
-})();
-</script>
 
+});
+</script>
 <!-- <script>
 
 document.addEventListener("DOMContentLoaded", function () {
